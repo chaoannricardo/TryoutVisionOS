@@ -1,0 +1,1894 @@
+#usda 1.0
+(
+    defaultPrim = "Root"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+reorder rootPrims = ["Root", "GridMaterial"]
+
+def Xform "Root"
+{
+    reorder nameChildren = ["_PlainMaterial", "Scene", "ImmersiveTraining", "HallWay_0", "Cube", "HallWay_1", "TSMCLOGO", "RemoteCollaboration", "RepairEQP"]
+    rel material:binding = None (
+        bindMaterialAs = "weakerThanDescendants"
+    )
+
+    def "_PlainMaterial" (
+        active = true
+        references = @_PlainMaterial.usda@
+    )
+    {
+        float3 xformOp:scale = (1, 1, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def "Scene" (
+        active = true
+        references = <>
+    )
+    {
+    }
+
+    def Xform "RemoteCollaboration" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["Wall_0", "Wall_1", "Wall_2", "Wall_3", "Floor", "Ceiling", "RemoteScreen", "RepairDocument"]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (0, 0, -5.414386)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cube "Ceiling" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/Ceiling/Material_Ceiling> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 0.01, 20)
+            float3 xformOp:translate = (-1, 2, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Ceiling"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Ceiling/Material_Ceiling/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0.8156863, 0.70906025, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 47
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:clearcoatRoughness"]
+                }
+            }
+        }
+
+        def Cube "Floor" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/Floor/Material_Floor> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 0.01, 20)
+            float3 xformOp:translate = (-1, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Floor"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Floor/Material_Floor/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 44
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = None
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0.7962088, 0.6913213, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/Floor/Material_Floor/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 77
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:opacityThreshold", "inputs:metallic", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 9.14.21 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-656.33594, 9.863281)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 86
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+                }
+            }
+        }
+
+        def Cube "Wall_3" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Materiall_Wall_3", "DefaultMaterial_2"]
+            rel material:binding = </Root/RemoteCollaboration/Wall_3/Materiall_Wall_3> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (1, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Materiall_Wall_3"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Wall_3/Materiall_Wall_3/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/Wall_3/Materiall_Wall_3/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 44
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture7.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 42
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord", "inputs:texcoord", "inputs:texcoord"]
+                }
+            }
+        }
+
+        def Cube "Wall_2" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/Wall_2/Material_Wall_2> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (-3, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_2"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Wall_2/Material_Wall_2/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/Wall_2/Material_Wall_2/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                    int ui:nodegraph:node:stackingOrder = 43
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture9.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 41
+                }
+            }
+        }
+
+        def Cube "Wall_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Material_Wall_1", "DefaultMaterial_1"]
+            rel material:binding = </Root/RemoteCollaboration/Wall_1/Material_Wall_1>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 10, 0.01)
+            float3 xformOp:translate = (-1, 1, 3)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_1"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Wall_1/Material_Wall_1/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 42
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/Wall_1/Material_Wall_1/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 47
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:diffuseColor"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture7.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 44
+                }
+            }
+        }
+
+        def Cube "Wall_0" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/Wall_0/Material_Wall_0>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 10, 0.01)
+            float3 xformOp:translate = (-1, 1, -1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_0"
+            {
+                token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/Wall_0/Material_Wall_0/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/Wall_0/Material_Wall_0/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 51
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:metallic", "inputs:roughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture4.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 49
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:uaddressmode", "inputs:texcoord", "inputs:default"]
+                }
+            }
+        }
+
+        def Cube "RemoteScreen" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 0.56933093, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/RemoteScreen/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.95975566, 0, 0.28083637, 0)
+            float3 xformOp:scale = (5, 3, 0.01)
+            float3 xformOp:translate = (-1.8458885, 1.5457906, -0.50599575)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                prepend token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/RemoteScreen/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/RemoteCollaboration/RemoteScreen/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/RemoteScreen/DefaultMaterial/Image.outputs:out>
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 11.36.48 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-503.11328, 102.42578)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 7
+                }
+            }
+        }
+
+        def Cube "RepairDocument" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 0.56933093, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/RemoteCollaboration/RepairDocument/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.95975566, 0, 0.28083637, 0)
+            float3 xformOp:scale = (3, 5, 0.01)
+            float3 xformOp:translate = (-1.6101558, 0.71372736, -0.6568198)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                prepend token outputs:mtlx:surface.connect = </Root/RemoteCollaboration/RepairDocument/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/RemoteCollaboration/RepairDocument/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    color3f inputs:diffuseColor.connect = </Root/RemoteCollaboration/RepairDocument/DefaultMaterial/Image.outputs:out>
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @yanmar-industrial-engines-3tnv-and-4tnv-series-service-manual-pdf.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-514.27734, 95.65625)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 8
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:vaddressmode", "inputs:vaddressmode"]
+                }
+            }
+        }
+    }
+
+    def Xform "RepairEQP" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["Wall_0", "Wall_1", "Wall_2", "Wall_3", "Floor", "Ceiling", "SOP"]
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (1, 1, 1)
+        float3 xformOp:translate = (5.5352864, 0, -5.414386)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Cube "Ceiling" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RepairEQP/Ceiling/Material_Ceiling> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (10, 0.01, 20)
+            float3 xformOp:translate = (-2, 2, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Ceiling"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Ceiling/Material_Ceiling/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0, 0, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 42
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+            }
+        }
+
+        def Cube "Floor" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RepairEQP/Floor/Material_Floor> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (10, 0.01, 20)
+            float3 xformOp:translate = (-2, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Floor"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Floor/Material_Floor/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 44
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = None
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0.7962088, 0.6913213, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/Floor/Material_Floor/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 77
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:opacityThreshold", "inputs:metallic", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 9.14.21 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-656.33594, 9.863281)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 86
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out"]
+                }
+            }
+        }
+
+        def Cube "Wall_3" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Materiall_Wall_3", "DefaultMaterial_2"]
+            rel material:binding = </Root/RepairEQP/Wall_3/Materiall_Wall_3> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (-1, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Materiall_Wall_3"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Wall_3/Materiall_Wall_3/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/Wall_3/Materiall_Wall_3/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 39
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture7.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 41
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord", "inputs:texcoord"]
+                }
+            }
+        }
+
+        def Cube "Wall_2" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RepairEQP/Wall_2/Material_Wall_2> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (-3, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_2"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Wall_2/Material_Wall_2/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/Wall_2/Material_Wall_2/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 39
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture9.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 41
+                }
+            }
+        }
+
+        def Cube "Wall_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Material_Wall_1", "DefaultMaterial_1"]
+            rel material:binding = </Root/RepairEQP/Wall_1/Material_Wall_1>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (10, 10, 0.01)
+            float3 xformOp:translate = (-2, 1, 3)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_1"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Wall_1/Material_Wall_1/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 42
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/Wall_1/Material_Wall_1/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 41
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture5.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 43
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:default"]
+                }
+            }
+        }
+
+        def Cube "Wall_0" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/RepairEQP/Wall_0/Material_Wall_0>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (10, 10, 0.01)
+            float3 xformOp:translate = (-2, 1, -1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_0"
+            {
+                token outputs:mtlx:surface.connect = </Root/RepairEQP/Wall_0/Material_Wall_0/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/Wall_0/Material_Wall_0/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 39
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture7.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 42
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:uaddressmode", "inputs:texcoord", "inputs:default"]
+                }
+            }
+        }
+
+        def Cube "SOP" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 0.8431198, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/RepairEQP/SOP/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.91245174, 0, 0.40918434, 0)
+            float3 xformOp:scale = (2, 3, 0.01)
+            float3 xformOp:translate = (-1.564918, 1.1418841, 2.3998635)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                prepend token outputs:mtlx:surface.connect = </Root/RepairEQP/SOP/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/RepairEQP/SOP/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    color3f inputs:diffuseColor.connect = </Root/RepairEQP/SOP/DefaultMaterial/Image.outputs:out>
+                    float inputs:metallic
+                    float inputs:opacity
+                    float inputs:roughness
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @yanmar-industrial-engines-3tnv-and-4tnv-series-service-manual-pdf.png@
+                    string inputs:filtertype
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-513.6133, 88.54297)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 6
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:uaddressmode"]
+                }
+            }
+        }
+    }
+
+    def Xform "ImmersiveTraining" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["Wall_0", "Wall_1", "Wall_2", "Wall_3", "Floor", "Ceiling", "VendorDocument", "TeachingPPT", "TeachingVideo"]
+        def Cube "Wall_0" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/Wall_0/Material_Wall_0>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 10, 0.01)
+            float3 xformOp:translate = (-1, 1, -1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_0"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Wall_0/Material_Wall_0/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/ImmersiveTraining/Wall_0/Material_Wall_0/DefaultSurfaceShader.outputs:surface>
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 45
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 9.43.47 PM.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 55
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:uaddressmode", "inputs:texcoord", "inputs:default", "inputs:file", "inputs:default", "inputs:default", "inputs:texcoord"]
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat = 1
+                    float inputs:clearcoatRoughness = 1
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/Wall_0/Material_Wall_0/Image.outputs:out>
+                    color3f inputs:emissiveColor = (0, 0, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 96
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:roughness", "inputs:metallic", "inputs:opacity", "inputs:emissiveColor"]
+                }
+            }
+        }
+
+        def Cube "Wall_1" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Material_Wall_1", "DefaultMaterial_1"]
+            rel material:binding = </Root/ImmersiveTraining/Wall_1/Material_Wall_1>
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 10, 0.01)
+            float3 xformOp:translate = (-1, 1, 3)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_1"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Wall_1/Material_Wall_1/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 42
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/Wall_1/Material_Wall_1/Image.outputs:out>
+                    color3f inputs:emissiveColor = (0.59581345, 0.59581345, 0.59581345) (
+                        colorSpace = "lin_srgb"
+                    )
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                    int ui:nodegraph:node:stackingOrder = 45
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture4.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 42
+                }
+            }
+        }
+
+        def Cube "Wall_2" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/Wall_2/Material_Wall_2> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (-3, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Wall_2"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Wall_2/Material_Wall_2/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/Wall_2/Material_Wall_2/Image.outputs:out>
+                    color3f inputs:emissiveColor = (0.59581345, 0.59581345, 0.59581345) (
+                        colorSpace = "lin_srgb"
+                    )
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 45
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:metallic"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture9.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 41
+                }
+            }
+        }
+
+        def Cube "Wall_3" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            reorder nameChildren = ["Materiall_Wall_3", "DefaultMaterial_2"]
+            rel material:binding = </Root/ImmersiveTraining/Wall_3/Materiall_Wall_3> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (0.01, 10, 20)
+            float3 xformOp:translate = (1, 1, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Materiall_Wall_3"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Wall_3/Materiall_Wall_3/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/Wall_3/Materiall_Wall_3/Image.outputs:out>
+                    color3f inputs:emissiveColor = (0.28717458, 0.28717458, 0.28717458) (
+                        colorSpace = "lin_srgb"
+                    )
+                    float inputs:ior = 1
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 44
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Picture6.png@
+                    string inputs:filtertype
+                    float2 inputs:texcoord
+                    string inputs:uaddressmode
+                    string inputs:vaddressmode
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-576.1875, 53.03125)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 42
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord", "inputs:file"]
+                }
+            }
+        }
+
+        def Cube "Floor" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/Floor/Material_Floor> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 0.01, 20)
+            float3 xformOp:translate = (-1, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Floor"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Floor/Material_Floor/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 44
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat.connect = None
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0.7962088, 0.6913213, 0) (
+                        colorSpace = "srgb_texture"
+                    )
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/Floor/Material_Floor/Image.outputs:out>
+                    color3f inputs:emissiveColor = (0.28717458, 0.28717458, 0.28717458) (
+                        colorSpace = "lin_srgb"
+                    )
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity.connect = None
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 89
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness", "inputs:opacityThreshold", "inputs:metallic", "inputs:clearcoatRoughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 9.14.21 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-656.33594, 9.863281)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 88
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out", "inputs:uaddressmode"]
+                }
+            }
+        }
+
+        def Cube "Ceiling" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/Ceiling/Material_Ceiling> (
+                bindMaterialAs = "weakerThanDescendants"
+            )
+            double size = 0.2
+            quatf xformOp:orient = (1, 0, 0, 0)
+            float3 xformOp:scale = (20, 0.01, 20)
+            float3 xformOp:translate = (-1, 2, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "Material_Ceiling"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/Ceiling/Material_Ceiling/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:mtlx:surface"]
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (-76.00529, -29.63681)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 80
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness = 0
+                    color3f inputs:diffuseColor = (0.59581345, 0.59581345, 0.59581345) (
+                        colorSpace = "lin_srgb"
+                    )
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal.connect = None
+                    float inputs:occlusion
+                    float inputs:opacity
+                    float inputs:opacityThreshold.connect = None
+                    float inputs:roughness = 0
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-349.2461, 45.679688)
+                    float2 ui:nodegraph:node:size = (208, 307)
+                    int ui:nodegraph:node:stackingOrder = 43
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:clearcoatRoughness"]
+                }
+            }
+        }
+
+        def Cube "VendorDocument" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, -0.5366106, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/VendorDocument/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.96422154, 0, -0.26509777, 0)
+            float3 xformOp:scale = (3, 3, 0.01)
+            float3 xformOp:translate = (-0.90979326, 0.9588186, -0.71996754)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/VendorDocument/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = </Root/ImmersiveTraining/VendorDocument/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/VendorDocument/DefaultMaterial/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                    int ui:nodegraph:node:stackingOrder = 13
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:roughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 9.58.28 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-482.1328, 100.64844)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 17
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out", "inputs:default", "inputs:uaddressmode", "inputs:texcoord"]
+                }
+            }
+        }
+
+        def Cube "TeachingPPT" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 0.85389143, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/TeachingPPT/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.91023475, 0, 0.41409257, 0)
+            float3 xformOp:scale = (3.0000002, 1.5, 0.01)
+            float3 xformOp:translate = (-2.1111434, 0.71617717, -0.7504505)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/TeachingPPT/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/TeachingPPT/DefaultMaterial/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                    int ui:nodegraph:node:stackingOrder = 13
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:roughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @Screenshot 2023-08-23 at 10.07.30 PM.png@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-482.1328, 100.64844)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 18
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out", "inputs:default", "inputs:uaddressmode", "inputs:texcoord"]
+                }
+            }
+        }
+
+        def Cube "TeachingVideo" (
+            active = true
+            prepend apiSchemas = ["MaterialBindingAPI"]
+            customData = {
+                float3 rotationEulerHint = (0, 0.85389143, 0)
+            }
+        )
+        {
+            rel material:binding = </Root/ImmersiveTraining/TeachingVideo/DefaultMaterial>
+            double size = 0.2
+            quatf xformOp:orient = (0.91023475, 0, 0.41409263, 0)
+            float3 xformOp:scale = (3.0000002, 3, 0.01)
+            float3 xformOp:translate = (-2.1140363, 1.1911663, -0.74713147)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            def Material "DefaultMaterial"
+            {
+                token outputs:mtlx:surface.connect = </Root/ImmersiveTraining/TeachingVideo/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+                token outputs:realitykit:vertex
+                token outputs:surface.connect = None
+                float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (7.7226562, 97.85156)
+                float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+                int ui:nodegraph:realitykit:subgraphOutputs:stackingOrder = 30
+
+                def Shader "DefaultSurfaceShader" (
+                    active = false
+                )
+                {
+                    uniform token info:id = "UsdPreviewSurface"
+                    color3f inputs:diffuseColor = (1, 1, 1)
+                    float inputs:roughness = 0.75
+                    token outputs:surface
+                }
+
+                def Shader "MaterialXPreviewSurface"
+                {
+                    uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                    float inputs:clearcoat
+                    float inputs:clearcoatRoughness
+                    color3f inputs:diffuseColor.connect = </Root/ImmersiveTraining/TeachingVideo/DefaultMaterial/Image.outputs:out>
+                    color3f inputs:emissiveColor
+                    float inputs:ior
+                    float inputs:metallic
+                    float3 inputs:normal
+                    float inputs:opacity
+                    float inputs:roughness.connect = None
+                    token outputs:out
+                    float2 ui:nodegraph:node:pos = (-255, 105)
+                    float2 ui:nodegraph:node:size = (208, 199)
+                    int ui:nodegraph:node:stackingOrder = 28
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:roughness"]
+                }
+
+                def Shader "Image"
+                {
+                    uniform token info:id = "ND_image_color3"
+                    asset inputs:file = @19340947.jpg@
+                    string inputs:filtertype
+                    color3f outputs:out
+                    float2 ui:nodegraph:node:pos = (-482.1328, 100.64844)
+                    float2 ui:nodegraph:node:size = (149, 199)
+                    int ui:nodegraph:node:stackingOrder = 19
+                    string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["outputs:out", "inputs:default", "inputs:uaddressmode", "inputs:texcoord"]
+                }
+            }
+        }
+    }
+
+    def Cylinder "TSMCLOGO" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (1.5806532, 0.9190539, 0.0061936104)
+        }
+    )
+    {
+        uniform token axis = "Y"
+        double height = 0.2
+        rel material:binding = </Root/TSMCLOGO/DefaultMaterial>
+        double radius = 0.1
+        quatf xformOp:orient = (0.63159513, 0.6358994, 0.31404018, -0.31320626)
+        float3 xformOp:scale = (12, 1.5, 10)
+        float3 xformOp:translate = (2.3950007, 3.6629956, -1.1407758)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:mtlx:surface.connect = </Root/TSMCLOGO/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/TSMCLOGO/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+            def Shader "DefaultSurfaceShader" (
+                active = false
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (1, 1, 1)
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "MaterialXPreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat.connect = None
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/TSMCLOGO/DefaultMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor.connect = None
+                float inputs:ior
+                float inputs:metallic
+                float3 inputs:normal
+                float inputs:opacity
+                float inputs:roughness
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (208, 307)
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Image"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @tsmc logo.png@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-538.875, 94.41797)
+                float2 ui:nodegraph:node:size = (149, 199)
+                int ui:nodegraph:node:stackingOrder = 3
+            }
+        }
+    }
+
+    def Cube "HallWay_1" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+        customData = {
+            float3 rotationEulerHint = (0, 1.5707963, 0)
+        }
+    )
+    {
+        rel material:binding = </Root/HallWay_1/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (0.70849156, 0, 0.70571923, 0)
+        float3 xformOp:scale = (5, 10, 7.5)
+        float3 xformOp:translate = (1.7318414, 1.0000126, -5.894005)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:mtlx:surface.connect = </Root/HallWay_1/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/HallWay_1/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+            def Shader "DefaultSurfaceShader" (
+                active = false
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.73611325, 0.6415988, 0) (
+                    colorSpace = "srgb_texture"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "MaterialXPreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness
+                color3f inputs:diffuseColor.connect = </Root/HallWay_1/DefaultMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor
+                float inputs:ior
+                float inputs:metallic
+                float3 inputs:normal
+                float inputs:opacity.connect = None
+                float inputs:roughness
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (208, 307)
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced"]
+            }
+
+            def Shader "Image"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @Picture6.png@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-554.5039, 105.3125)
+                float2 ui:nodegraph:node:size = (149, 199)
+                int ui:nodegraph:node:stackingOrder = 6
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:uaddressmode"]
+            }
+        }
+    }
+
+    def Cube "HallWay_0" (
+        active = true
+        prepend apiSchemas = ["MaterialBindingAPI"]
+    )
+    {
+        rel material:binding = </Root/HallWay_0/DefaultMaterial>
+        double size = 0.2
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:scale = (5, 10, 7)
+        float3 xformOp:translate = (-2.4959426, 1, -1.7089877)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def Material "DefaultMaterial"
+        {
+            prepend token outputs:mtlx:surface.connect = </Root/HallWay_0/DefaultMaterial/MaterialXPreviewSurface.outputs:out>
+            token outputs:realitykit:vertex
+            token outputs:surface.connect = </Root/HallWay_0/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
+            float2 ui:nodegraph:realitykit:subgraphOutputs:pos = (0, 109.5)
+            float2 ui:nodegraph:realitykit:subgraphOutputs:size = (182, 99)
+
+            def Shader "DefaultSurfaceShader" (
+                active = false
+            )
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.73611325, 0.6415988, 0) (
+                    colorSpace = "srgb_texture"
+                )
+                float inputs:roughness = 0.75
+                token outputs:surface
+            }
+
+            def Shader "MaterialXPreviewSurface"
+            {
+                uniform token info:id = "ND_UsdPreviewSurface_surfaceshader"
+                float inputs:clearcoat
+                float inputs:clearcoatRoughness.connect = None
+                color3f inputs:diffuseColor.connect = </Root/HallWay_0/DefaultMaterial/Image.outputs:out>
+                color3f inputs:emissiveColor
+                float inputs:ior
+                float inputs:metallic.connect = None
+                float3 inputs:normal
+                float inputs:opacity
+                float inputs:roughness.connect = None
+                token outputs:out
+                float2 ui:nodegraph:node:pos = (-255, 105)
+                float2 ui:nodegraph:node:size = (208, 307)
+                int ui:nodegraph:node:stackingOrder = 12
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["Advanced", "inputs:roughness"]
+            }
+
+            def Shader "Image"
+            {
+                uniform token info:id = "ND_image_color3"
+                asset inputs:file = @Picture6.png@
+                string inputs:filtertype
+                color3f outputs:out
+                float2 ui:nodegraph:node:pos = (-491.98047, 96.74609)
+                float2 ui:nodegraph:node:size = (149, 199)
+                int ui:nodegraph:node:stackingOrder = 11
+                string[] ui:nodegraph:realitykit:node:attributesShowingChildren = ["inputs:texcoord", "inputs:default"]
+            }
+        }
+    }
+}
+
