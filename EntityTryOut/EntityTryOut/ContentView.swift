@@ -72,7 +72,12 @@ struct ContentView: View {
                     relativeTo: sphere
                 ) 
                 
-                tooltip0?.move(to: Transform(), relativeTo: sphere, duration: 5)
+//                tooltip0?.move(to: Transform(), relativeTo: sphere, duration: 5)
+                
+                tooltip0?.setPosition(
+                    SIMD3<Float>(x: -0, y: -0, z: 0.1),
+                    relativeTo: sphere
+                )
                 
   
 //                tooltip0?.setPosition(

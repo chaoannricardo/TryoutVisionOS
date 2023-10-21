@@ -34,29 +34,21 @@ public struct LearnMoreView: View {
         VStack {
             Spacer()
             ZStack(alignment: .center) {
-                if !showingMoreInfo {
+                VStack(alignment: .leading, spacing: 10) {
                     Text(name)
                         .matchedGeometryEffect(id: "Name", in: animation)
                         .font(titleFont)
-                        .padding()
-                }
-                
-                if showingMoreInfo {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(name)
-                            .matchedGeometryEffect(id: "Name", in: animation)
-                            .font(titleFont)
-                        
-                        Text(description)
-                            .font(descriptionFont)
-                        
-                       
-                        }
+                    
+                    Text(description)
+                        .font(descriptionFont)
+                    
+                   
                     }
                 }
             }
             .frame(width: 408)
             .padding(24)
+            .background(.green)
             .onTapGesture {
                 withAnimation(.spring) {
                     showingMoreInfo.toggle()
@@ -65,15 +57,17 @@ public struct LearnMoreView: View {
         }
     }
 }
-//
-//#Preview {
-//    RealityView { content, attachments in
-//        if let entity = attachments.entity(for: "z") {
-//            content.add(entity)
-//        }
-//    } attachments: {
-//        LearnMoreView(name: "Phoenix Lake",
-//                      description: "Lake · Northern California")
-//        .tag("z")
-//    }
-//}
+
+#Preview {
+    
+    RealityView { content, attachments in
+        if let entity = attachments.entity(for: "z") {
+            content.add(entity)
+        }
+    } attachments: {
+        Attachment(id: "entity") {
+            LearnMoreView(name: "Phoenix Lake",
+                          description: "Lake · Northern California")
+           }
+    }
+}
