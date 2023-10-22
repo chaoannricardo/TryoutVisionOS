@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C198AF22AE43CD5002BFB0B /* LearnMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C198AF12AE43CD5002BFB0B /* LearnMoreView.swift */; };
 		8C198AF42AE441E6002BFB0B /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C198AF32AE441E6002BFB0B /* ToolTipView.swift */; };
+		8C198AF82AE4FE93002BFB0B /* GlassContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C198AF72AE4FE93002BFB0B /* GlassContainerView.swift */; };
 		8C96EF1E2AE409DD00E08BFD /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 8C96EF1D2AE409DD00E08BFD /* RealityKitContent */; };
 		8C96EF202AE409DD00E08BFD /* EntityTryOutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C96EF1F2AE409DD00E08BFD /* EntityTryOutApp.swift */; };
 		8C96EF222AE409DD00E08BFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C96EF212AE409DD00E08BFD /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		8C198AF12AE43CD5002BFB0B /* LearnMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMoreView.swift; sourceTree = "<group>"; };
 		8C198AF32AE441E6002BFB0B /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
+		8C198AF72AE4FE93002BFB0B /* GlassContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassContainerView.swift; sourceTree = "<group>"; };
 		8C96EF182AE409DD00E08BFD /* EntityTryOut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EntityTryOut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C96EF1C2AE409DD00E08BFD /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		8C96EF1F2AE409DD00E08BFD /* EntityTryOutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityTryOutApp.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				8C96EF232AE409DD00E08BFD /* ImmersiveView.swift */,
 				8C198AF12AE43CD5002BFB0B /* LearnMoreView.swift */,
 				8C198AF32AE441E6002BFB0B /* ToolTipView.swift */,
+				8C198AF72AE4FE93002BFB0B /* GlassContainerView.swift */,
 				8C96EF252AE409DF00E08BFD /* Assets.xcassets */,
 				8C96EF2A2AE409DF00E08BFD /* Info.plist */,
 				8C96EF272AE409DF00E08BFD /* Preview Content */,
@@ -167,6 +170,7 @@
 				8C96EF202AE409DD00E08BFD /* EntityTryOutApp.swift in Sources */,
 				8C198AF42AE441E6002BFB0B /* ToolTipView.swift in Sources */,
 				8C198AF22AE43CD5002BFB0B /* LearnMoreView.swift in Sources */,
+				8C198AF82AE4FE93002BFB0B /* GlassContainerView.swift in Sources */,
 				8C96EF242AE409DD00E08BFD /* ImmersiveView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

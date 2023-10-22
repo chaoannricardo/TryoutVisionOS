@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ToolTipView: View {
     
+    var textContent: String = "HelloWorld"
+    
     private var titleFont: Font {
         .system(size: 48, weight: .semibold)
     }
@@ -16,8 +18,7 @@ struct ToolTipView: View {
     
     var body: some View {
     
-        
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(textContent)
             .background(.red)
             .font(titleFont)
 
