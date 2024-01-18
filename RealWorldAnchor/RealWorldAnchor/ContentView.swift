@@ -34,21 +34,7 @@ struct ContentView: View {
     
     let modelWorldTracking = WorldTrackingModel()
     let modelPlaneTracking = PlaneTrackingModel()
-    
-    
-//    func updateImage(_ anchor: ImageAnchor) {
-//        if imageAnchors[anchor.id] == nil {
-//            // Add a new entity to represent this image.
-//            let entity = ModelEntity(mesh: .generateSphere(radius: 0.05))
-//            entityMap[anchor.id] = entity
-//            rootEntity.addChild(entity)
-//        }
-//        
-//        if anchor.isTracked {
-//            entityMap[anchor.id]?.transform = Transform(matrix: anchor.originFromAnchorTransform)
-//        }
-//    }
-    
+    let modelHandTracking = HandTrackingModel()
 
     func imageSensing(){
         
@@ -96,6 +82,7 @@ struct ContentView: View {
                     
                     
                     content.add(modelWorldTracking.rootEntity)
+                    content.add(modelHandTracking.rootEntity)
                     
                     content.add(scene)
                     
@@ -118,28 +105,32 @@ struct ContentView: View {
                 enlarge.toggle()
             })
             .task {
-                // world tracking
-//                await modelWorldTracking.run(
-//                    enableGeoMesh: true,
-//                    enableMeshClassfication: true)
-                
-                // plane tracking
-//                await modelPlaneTracking.run(
-//                    enablePlaneClassification: true
-//                )
-                
-                // image tracking
-
-                
+                await modelWorldTracking.run(enableGeoMesh:true, enableMeshClassfication:true)
             }
+            .task{
+                await modelHandTracking.run()
+            }
+            .task(id: modelHandTracking.testVariable){
+                print("Changeing \(modelHandTracking.testVariable)")
+            }
+//            .onChange(of: modelHandTracking.testVariable, {
+//                print("Changeing \(modelHandTracking.testVariable)")
+//            })
             .onDisappear{
                 modelWorldTracking.stop()
             }
+            .onReceive(modelHandTracking.testVariable, perform: {
+                
+            })
             
         
         }
-
+        
     }
+                
+    
+    
+    
 }
 
 #Preview(windowStyle: .volumetric) {

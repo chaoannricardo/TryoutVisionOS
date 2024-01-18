@@ -19,6 +19,7 @@
 		A38445B72B53C47F0028A794 /* GeometrySource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38445B62B53C47F0028A794 /* GeometrySource.swift */; };
 		A38445B92B53D2C30028A794 /* PlaneTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38445B82B53D2C30028A794 /* PlaneTrackingModel.swift */; };
 		A38445BD2B53D3C60028A794 /* PlaneAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38445BC2B53D3C60028A794 /* PlaneAnchor.swift */; };
+		A3DAA0852B596003003163A2 /* HandTrackingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DAA0842B596003003163A2 /* HandTrackingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A38445B62B53C47F0028A794 /* GeometrySource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometrySource.swift; sourceTree = "<group>"; };
 		A38445B82B53D2C30028A794 /* PlaneTrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneTrackingModel.swift; sourceTree = "<group>"; };
 		A38445BC2B53D3C60028A794 /* PlaneAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaneAnchor.swift; sourceTree = "<group>"; };
+		A3DAA0842B596003003163A2 /* HandTrackingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandTrackingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				A38445B22B53C00D0028A794 /* ImageTrackingModel.swift */,
 				A38445B02B53C0010028A794 /* WorldTrackingModel.swift */,
 				A38445B82B53D2C30028A794 /* PlaneTrackingModel.swift */,
+				A3DAA0842B596003003163A2 /* HandTrackingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				A31EB1482B5380480039A282 /* RealWorldAnchorApp.swift in Sources */,
 				A31EB14C2B5380480039A282 /* ImmersiveView.swift in Sources */,
 				A38445B52B53C06E0028A794 /* TrackingModel.swift in Sources */,
+				A3DAA0852B596003003163A2 /* HandTrackingModel.swift in Sources */,
 				A38445B12B53C0010028A794 /* WorldTrackingModel.swift in Sources */,
 				A38445B92B53D2C30028A794 /* PlaneTrackingModel.swift in Sources */,
 			);

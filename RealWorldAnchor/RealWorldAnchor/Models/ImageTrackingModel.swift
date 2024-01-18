@@ -20,7 +20,7 @@ class ImageTrackingModel: TrackingModel {
             Task {
                    try await session.run([imageInfo])
                    for await update in imageInfo.anchorUpdates {
-                       updateImage(update.anchor)
+               
                    }
                }
         }
@@ -47,20 +47,7 @@ class ImageTrackingModel: TrackingModel {
 //            print("error is \(error)")
 //        }
     }
-    
-    func updateImage(_ anchor: ImageAnchor) {
-        if imageAnchors[anchor.id] == nil {
-            // Add a new entity to represent this image.
-            let entity = ModelEntity(mesh: .generateSphere(radius: 0.05))
-            entityMap[anchor.id] = entity
-            rootEntity.addChild(entity)
-        }
-        
-        if anchor.isTracked {
-            entityMap[anchor.id]?.transform = Transform(matrix: anchor.originFromAnchorTransform)
-        }
-    }
-    
+
     // MARK: Geometry Mesh
     
     @MainActor fileprivate  func createMeshEntity(_ geometry: MeshAnchor.Geometry, _ anchor: MeshAnchor) async throws  {
