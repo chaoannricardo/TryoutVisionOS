@@ -113,16 +113,9 @@ struct ContentView: View {
             .task(id: modelHandTracking.testVariable){
                 print("Changeing \(modelHandTracking.testVariable)")
             }
-//            .onChange(of: modelHandTracking.testVariable, {
-//                print("Changeing \(modelHandTracking.testVariable)")
-//            })
             .onDisappear{
                 modelWorldTracking.stop()
             }
-            .onReceive(modelHandTracking.testVariable, perform: {
-                
-            })
-            
         
         }
         
